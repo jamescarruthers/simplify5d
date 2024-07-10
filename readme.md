@@ -10,6 +10,7 @@ Install using pip:
 
 ```bash
 pip install simplify5d
+```
 
 ## Usage
 
