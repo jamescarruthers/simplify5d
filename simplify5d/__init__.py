@@ -1,4 +1,5 @@
 from .simplify5d import (
+    simplify,
     simplify_2d,
     simplify_3d,
     get_sq_dist_2d,

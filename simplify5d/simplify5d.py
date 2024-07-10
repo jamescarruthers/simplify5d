@@ -119,20 +119,35 @@ def simplify_douglas_peucker_3d(points, sq_tolerance):
     simplified.append(points[last])
     return simplified
 
-def simplify_2d(points, tolerance=1.0, highest_quality=False):
+def simplify(points, tolerance=1.0, highest_quality=False):
+    points = np.asarray(points)
+    
     if len(points) <= 2:
         return points
+    
+    is_2d = points.shape[1] == 2
+    is_3d = points.shape[1] == 3
+    
+    if not (is_2d or is_3d):
+        raise ValueError("Points must be 2D or 3D")
+    
     sq_tolerance = tolerance * tolerance
+    
     if not highest_quality:
-        points = simplify_radial_dist_2d(points, sq_tolerance)
-    points = simplify_douglas_peucker_2d(points, sq_tolerance)
+        points = simplify_radial_dist_2d(points, sq_tolerance) if is_2d else simplify_radial_dist_3d(points, sq_tolerance)
+    
+    points = simplify_douglas_peucker_2d(points, sq_tolerance) if is_2d else simplify_douglas_peucker_3d(points, sq_tolerance)
+    
     return points
 
-def simplify_3d(points, tolerance=1.0, highest_quality=False):
-    if len(points) <= 2:
-        return points
-    sq_tolerance = tolerance * tolerance
-    if not highest_quality:
-        points = simplify_radial_dist_3d(points, sq_tolerance)
-    points = simplify_douglas_peucker_3d(points, sq_tolerance)
-    return points
+# Example usage:
+if __name__ == "__main__":
+    points_2d = np.array([[0, 0], [1, 1], [2, 2], [3, 3]])
+    points_3d = np.array([[0, 0, 0], [1, 1, 1], [2, 2, 2], [3, 3, 3]])
+
+    simplified_2d = simplify(points_2d, tolerance=1.0, highest_quality=False)
+    simplified_3d = simplify(points_3d, tolerance=1.0, highest_quality=False)
+
+    print("Simplified 2D points:", simplified_2d)
+    print("Simplified 3D points:", simplified_3d)
+    
