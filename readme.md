@@ -14,7 +14,7 @@ pip install simplify5d
 
 ## Usage
 
-```bash
+```python
 import numpy as np
 from simplify5d import simplify_2d, simplify_3d
 
