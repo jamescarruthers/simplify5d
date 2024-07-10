@@ -2,7 +2,7 @@
 
 A module for simplifying 2D and 3D lines using Ramer-Douglas-Peucker algorithm.
 
-An extended port of simplify.js - https://github.com/mourner/simplify-js
+An extended port of the very fast simplify.js - https://github.com/mourner/simplify-js
 
 ## Installation
 
