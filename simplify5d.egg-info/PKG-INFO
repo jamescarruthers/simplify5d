@@ -17,7 +17,7 @@ Requires-Dist: numpy
 
 A module for simplifying 2D and 3D lines using Ramer-Douglas-Peucker algorithm.
 
-An extended port of simplify.js.
+An extended port of the very fast simplify.js - https://github.com/mourner/simplify-js
 
 ## Installation
 
@@ -25,9 +25,11 @@ Install using pip:
 
 ```bash
 pip install simplify5d
+```
 
 ## Usage
 
+```python
 import numpy as np
 from simplify5d import simplify_2d, simplify_3d
 
