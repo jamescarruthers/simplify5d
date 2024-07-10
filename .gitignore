@@ -1,4 +1,4 @@
 .DS_Store
 build/
 dist/
-*.egg-info/
+simplify5d.egg-info/
